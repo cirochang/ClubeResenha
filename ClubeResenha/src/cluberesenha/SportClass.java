@@ -21,9 +21,15 @@ public class SportClass {
     private int end_hour;
     private int end_min;
     private String local;
-    private List matricula_aluno = new ArrayList();
+    private StudentList student_list;
+    private String matricula_teacher;
     
-    public void setAllParams(String sport_name,String description,String local,String week_day,int start_hour,int start_min,int end_hour,int end_min){
+    public SportClass(){
+        student_list = new StudentList();
+    }
+    
+    public void setAllParams(String matricula, String sport_name,String description,String local,String week_day,int start_hour,int start_min,int end_hour,int end_min){
+        this.setMatriculaTeacher(matricula);
         this.setSportName(sport_name);
         this.setDescription(description);
         this.setLocal(local);
@@ -33,9 +39,38 @@ public class SportClass {
         this.setEndMin(end_min);
         this.setWeekDay(week_day);
     }
+    
+    public void enrollStudent(String matricula, String note){
+        student_list.createStudent(matricula, note);
+    }
+    
+    public void enrollStudent(String matricula){
+        student_list.createStudent(matricula);
+    }
+    
+    public void unrollStudent(String matricula){
+        student_list.deleteStudentByMatricula(matricula);
+    }
+    
+    public boolean searchTeacherByMatricula(String matricula){
+        return matricula_teacher.equals(matricula);
+    }
+    
+    public boolean searchStudentByMatricula(String matricula){
+        return student_list.getStudentByMatricula(matricula) != null;
+    }
 
     
     //GETTERS AND SETTERS
+    
+    public void setMatriculaTeacher(String matricula){
+        this.matricula_teacher = matricula;
+    }
+    
+    public String getMatriculaTeacher(){
+        return matricula_teacher;
+    }
+    
     /**
      * @return the sport_name
      */
@@ -182,20 +217,6 @@ public class SportClass {
      */
     public void setLocal(String local) {
         this.local = local;
-    }
-
-    /**
-     * @return the matricula_aluno
-     */
-    public List getMatriculaAluno() {
-        return matricula_aluno;
-    }
-
-    /**
-     * @param matricula_aluno the matricula_aluno to set
-     */
-    public void setMatriculaAluno(List matricula_aluno) {
-        this.matricula_aluno = matricula_aluno;
     }
     
     

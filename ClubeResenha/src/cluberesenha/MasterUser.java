@@ -20,8 +20,8 @@ public class MasterUser extends Manager{
         user_list.createUser(user_type, first_name, last_name, email, password, phone, rg, cpf);
     }
     
-    public void deleteUser(UserList user_list, User user){
-        user_list.deleteUser(user);
+    public void deleteUser(UserList user_list){
+        user_list.deleteUser();
     }
     
 }

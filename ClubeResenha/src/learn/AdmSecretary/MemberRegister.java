@@ -237,7 +237,7 @@ public class MemberRegister extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPhoneActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try{
+       try{
             String first_name = txtFirstName.getText();
             String last_name = txtLastName.getText();
             String password = txtPassword.getText();

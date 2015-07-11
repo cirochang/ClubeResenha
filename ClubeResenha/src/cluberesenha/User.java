@@ -22,8 +22,15 @@ public abstract class User {
     //protected Date created_at;
     //protected Date updated_at;
     protected Adress adress;
+    protected SportClassList sport_class_list;
+    
+    public User(){
+        this.sport_class_list = SportClassList.getInstance();
+    }
     
     public abstract String getTypeName();
+    
+
     
     //NEED TO IMPLEMENT...
     public void createAdress(String street, int number, String state){
@@ -33,6 +40,20 @@ public abstract class User {
     public String getFullName(){
         return first_name + " " + last_name;
     }
+    
+    public SportClass getMySportClassStudent(int direction){
+        return sport_class_list.getSportClassStudent(direction, this.matricula);
+    }
+    
+    public SportClass getAllSportClass(int direction){
+        return sport_class_list.getSportClass(direction);
+    }
+    
+    public boolean checkSportClassStudent(){
+        return sport_class_list.checkSportClassStudent(this.matricula);
+    }
+    
+     //GETTERS AND SETTERS
     
     public void setAllParams(String user_type, String matricula, String first_name, String last_name, String email, String password, String phone, String rg, String cpf){
         setUserType(user_type);
@@ -45,8 +66,6 @@ public abstract class User {
         this.setRg(rg);
         this.setCpf(cpf);
     }
-    
-    //GETTERS AND SETTERS
     
     public String getPassword() {
         return password;
@@ -71,7 +90,6 @@ public abstract class User {
     public void setFirstName(String first_name) {
         this.first_name = first_name;
     }
-
 
     public String getUserType() {
         return user_type;

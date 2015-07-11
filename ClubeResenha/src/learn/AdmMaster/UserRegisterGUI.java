@@ -336,12 +336,12 @@ public class UserRegisterGUI extends javax.swing.JFrame {
             rbRestaurantOwner.setActionCommand("RestaurantOwner");
             rbPersonalTrainner.setActionCommand("PersonalTrainner");
             rbCinemaOwner.setActionCommand("CinemaOwner");
-
             String user_type = buttonGroup1.getSelection().getActionCommand();
+            
             controller.registerUser(user_type, first_name, last_name, email, password, phone, rg, cpf);
-            AdmMasterGUI itemloader = new AdmMasterGUI();
             User user_info = controller.getLastUser();
-            JOptionPane.showMessageDialog(null, "The Member " + user_info.getFullName() + " was saved in the system...\nYour Matricula is: " + user_info.getMatricula());
+            JOptionPane.showMessageDialog(null, "The "+ user_info.getUserType() +" " + user_info.getFullName() + " was saved in the system...\nYour Matricula is: " + user_info.getMatricula());
+            AdmMasterGUI itemloader = new AdmMasterGUI();
             itemloader.setVisible(true);
             this.setVisible(false);  
         }

@@ -5,6 +5,7 @@
  */
 package cluberesenha;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -12,18 +13,8 @@ import java.util.Random;
  * @author cirochang
  */
 public class UserList {
-    private static UserList instance;
-    final int num_max_users = 100;
-    private User[] user = new User[num_max_users];
-    private int num_users = 0;
-    
-    public static UserList get_instance(){
-           if(instance == null) 
-           {
-                instance = new UserList();
-           }
-           return instance;
-    }
+    private ArrayList<User> user = new ArrayList<>();
+    private int num_user = 0;
     
     //TESTE - CRIA USUARIOS TESTES
     public void initUserTest(){
@@ -36,80 +27,31 @@ public class UserList {
         String phone = "969007259";
         String rg = "12345678";
         String cpf = "15298233740";
-        user[num_users] = new Member();
-        user[num_users].setAllParams(user_type, matricula, first_name, last_name, email, password, phone, rg, cpf);
-        num_users += 1;  
+        user.add(new Member());
+        getLast().setAllParams(user_type, matricula, first_name, last_name, email, password, phone, rg, cpf);
         
-        user[num_users] = new Teacher();
-        user[num_users].setAllParams("Teacher", "20150002","Kakashi", "Sensei", "kakashi@gmail.com", "123456", "22883527", "345212345", "154993234");
-        num_users +=1;
+        user.add(new Teacher());
+        getLast().setAllParams("Teacher", "20150002","Kakashi", "Sensei", "kakashi@gmail.com", "123456", "22883527", "345212345", "154993234");
         
         //done
-        user[num_users] = new Secretary();
-        user[num_users].setAllParams("Secretary", "20150003","Jenifer", "Lopes", "jenifer@gmail.com", "123456", "22883527", "345212345", "154993234");
-        num_users +=1;
+        user.add(new Secretary());
+        getLast().setAllParams("Secretary", "20150003","Jenifer", "Lopes", "jenifer@gmail.com", "123456", "22883527", "345212345", "154993234");
         
         //done
-        user[num_users] = new MasterUser();
-        user[num_users].setAllParams("Master", "20150004","Goku", "Sayajin", "goku@gmail.com", "123456", "22883527", "345212345", "154993234");
-        num_users +=1;
+        user.add(new MasterUser());
+        getLast().setAllParams("Master", "20150004","Goku", "Sayajin", "goku@gmail.com", "123456", "22883527", "345212345", "154993234");
         
-        user[num_users] = new Doctor();
-        user[num_users].setAllParams("Doctor", "20150005","Sasha", "Grey", "sashagrey@gmail.com", "123456", "22883527", "345212345", "154993234");
-        num_users +=1;
+        user.add(new Doctor());
+        getLast().setAllParams("Doctor", "20150005","Sasha", "Grey", "sashagrey@gmail.com", "123456", "22883527", "345212345", "154993234");
         
-        user[num_users] = new RestaurantOwner();
-        user[num_users].setAllParams("Restaurant Owner", "20150006","Hong", "Chang", "hongchang@gmail.com", "123456", "22883527", "345212345", "154993234");
-        num_users +=1;
+        user.add(new RestaurantOwner());
+        getLast().setAllParams("Restaurant Owner", "20150006","Hong", "Chang", "hongchang@gmail.com", "123456", "22883527", "345212345", "154993234");
         
-        user[num_users] = new PersonalTrainner();
-        user[num_users].setAllParams("Personal Trainner", "20150007","Arnold", "Shernegued", "arnoldsherned@gmail.com", "123456", "22883527", "345212345", "154993234");
-        num_users +=1;
+        user.add(new PersonalTrainner());
+        getLast().setAllParams("Personal Trainner", "20150007","Arnold", "Shernegued", "arnoldsherned@gmail.com", "123456", "22883527", "345212345", "154993234");
         
-        user[num_users] = new CinemaOwner();
-        user[num_users].setAllParams("Cinema OWner", "20150008","Tulio", "Tuliban", "tuliotuliban@gmail.com", "123456", "22883527", "345212345", "154993234");
-        num_users +=1;
-    }
-    
-    public void editUser(User user_edit){
-        User user_update = getUserByMatricula(user_edit.getMatricula());
-        user_update = user_edit;
-    }
-    
-    //FACTORY METHOD
-    public User createUser(String user_type, String first_name, String last_name, String email, String password, String phone, String rg, String cpf){        
-        User new_user;
-        switch(user_type){
-            case "Member":
-                new_user = new Member();
-                break;
-            case "Teacher":
-                new_user = new Teacher();
-                break;
-            case "Secretary":
-                new_user = new Secretary();
-                break;
-            case "Master":
-                new_user = new MasterUser();
-                break;
-            case "Doctor":
-                new_user = new Doctor();
-                break;
-            case "Restaurant Owner":
-                new_user = new RestaurantOwner();
-                break;
-            case "Personal Trainner":
-                new_user = new PersonalTrainner();
-                break;
-            case "Cinema Owner":
-                new_user = new CinemaOwner();
-                break; 
-            default:
-                new_user = new Member();
-        }
-        new_user.setAllParams(user_type, matriculaGenerate(), first_name, last_name, email, password, phone, rg, cpf);
-        addUser(new_user);
-        return new_user;
+        user.add(new CinemaOwner());
+        getLast().setAllParams("Cinema Owner", "20150008","Tulio", "Tuliban", "tuliotuliban@gmail.com", "123456", "22883527", "345212345", "154993234");
     }
     
     public String matriculaGenerate(){
@@ -129,89 +71,105 @@ public class UserList {
     }    
     return matricula;
     }
-    
-    //factory method
-    public void addUser(User new_user) {
-        user[num_users] = new_user;
-        num_users += 1;
-    }
-    
+        
     public boolean authenticate(String matricula, String password){
         User user_verify;
         user_verify = getUserByMatricula(matricula);
-        if(password.equals(user_verify.getPassword())){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return password.equals(user_verify.getPassword());
     }
     
     public User getUserByMatricula(String matricula){
-        User user_verify;
-        for(int i = 0; i < num_users; i++){
-            if(user[i].getMatricula().equals(matricula)){
-                user_verify = this.user[i];
-                return user_verify;
+        for (User user_selected : user) {
+            if (user_selected.getMatricula().equals(matricula)) {
+                return user_selected;
             }
         }
         return null;
     }
     
-    public int getUserIndexByMatricula(String matricula){
-        for(int i = 0; i < num_users; i++){
-            if(user[i].getMatricula().equals(matricula)){
-                return i;
-            }
-        }
-        return num_max_users + 1;
-    }
-    
     public boolean existUserByMatricula(String matricula){
-        for(int i = 0; i < num_users; i++){
-            if(user[i].getMatricula().equals(matricula)){
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public User getLastUser(){
-        return user[num_users - 1];
+        return getUserByMatricula(matricula) != null;
     }
     
     
-    public User[] getAllUsers(){
-        User[] selected_users = new User[num_users];
-        for(int i = 0; i < num_users; i++){
-            selected_users[i] = user[i];
-        }
-        return selected_users;
-    }
-
-    public User[] getAllUsers(String user_type) {
-        int[] index_user_number = new int[num_users];
-        int counter = 0;
-        //get all users index selected
-        for(int i = 0; i < num_users; i++){
-            if(user[i].getUserType().equals(user_type)){
-                index_user_number[counter] = i;
-                counter += 1;
-            }
-        }
-        //put that users_index in a new User array
-        User[] selected_users = new User[counter];
-        for(int i = 0; i < counter; i++){
-            selected_users[i] = user[index_user_number[i]];
-        }
-        return selected_users;
+    public void deleteUser(){
+        user.remove(num_user);
     }
     
-    public void deleteUser(User user_to_delete){
-        int num_user = getUserIndexByMatricula(user_to_delete.getMatricula());
-        for(int i = num_user; i < this.num_users - 1; i++){
-            user[i] = user[i + 1];
+    //FACTORY METHOD
+    public void createUser(String user_type, String first_name, String last_name, String email, String password, String phone, String rg, String cpf){        
+        String matricula = matriculaGenerate();
+        switch(user_type){
+            case "Member":
+                user.add(new Member());
+                break;
+            case "Teacher":
+                user.add(new Teacher());
+                break;
+            case "Secretary":
+                user.add(new Secretary());
+                break;
+            case "Master":
+                user.add(new MasterUser());
+                break;
+            case "Doctor":
+                user.add(new Doctor());
+                break;
+            case "Restaurant Owner":
+                user.add(new RestaurantOwner());
+                break;
+            case "Personal Trainner":
+                user.add(new PersonalTrainner());
+                break;
+            case "Cinema Owner":
+                user.add(new CinemaOwner());
+                break; 
+            default:
+                user.add(new Member());
         }
+        getLast().setAllParams(user_type, matricula, first_name, last_name, email, password, phone, rg, cpf);
+    }
+    
+    public void editUser(String user_type, String matricula, String first_name, String last_name, String email, String password, String phone, String rg, String cpf){
+        user.get(num_user).setAllParams(user_type, matricula, first_name, last_name, email, password, phone, rg, cpf);
+    }
+    
+    public User getLast(){
+        return user.get(user.size()-1);
+    }
+    
+      
+    public User getUser(int direction){
+        if(num_user + direction >= user.size()){
+            num_user = 0;
+        }
+        else if(num_user + direction < 0){
+            num_user = user.size()-1;
+        }
+        else{
+            num_user = num_user + direction;
+        }
+        return this.user.get(num_user);
+    }
+    
+    public User getUser(int direction, String user_type){
+        User user_selected = getUser(direction);
+        if (user_selected.getUserType().equals(user_type)){
+            return user_selected;
+        }
+        else if(direction > getUserSize() || direction < -getUserSize()){
+            return getUser(getUserSize() + 1); //ERROR
+        }
+        else if(direction >= 0){
+            return getUser(direction + 1, user_type);
+        }
+        else{ 
+            return getUser(direction - 1, user_type);
+        }
+    }
+    
+    public int getUserSize(){
+        return user.size();
     }
     
 }

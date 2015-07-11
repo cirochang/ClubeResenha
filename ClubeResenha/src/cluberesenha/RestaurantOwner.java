@@ -13,8 +13,27 @@ package cluberesenha;
  */
 public class RestaurantOwner extends User {
     
+    private Restaurant restaurant = new Restaurant();
+    
     @Override
     public String getTypeName(){
         return "Restaurant Owner";
     }
+    
+    public void addCardapioItem(String name,String type,String description,float price){
+        restaurant.getCardapioList().createCardapioItem(name, type, description, price);
+    }
+    
+    public void removeCardapioItem(){
+        restaurant.getCardapioList().deleteCardapioItem();
+    }
+    
+    public void getCardapioItem(int direction){
+        restaurant.getCardapioList().getCardapioItem(direction);
+    }
+    
+    public void editCardapioItem(String name,String type,String description,float price){
+        restaurant.getCardapioList().editCardapioItem(name, type, description, price);
+    }
+    
 }

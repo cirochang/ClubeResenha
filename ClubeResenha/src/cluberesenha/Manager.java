@@ -11,8 +11,8 @@ package cluberesenha;
  */
 public abstract class Manager extends User {
     
-    public void editUser(UserList user_list, User user){
-        user_list.editUser(user);
+    public void editUser(UserList user_list, String user_type, String matricula, String first_name, String last_name, String email, String password, String phone, String rg, String cpf){
+        user_list.editUser(user_type, matricula ,first_name, last_name, email, password, phone, rg, cpf);
     }
     
 }

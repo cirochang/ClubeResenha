@@ -29,7 +29,7 @@ public class ShowSportClassesGUI extends javax.swing.JFrame {
         jLabel1.setText(controller.getCurrentUser().getFullName());
         jLabel2.setText(controller.getCurrentUser().getTypeName() + " User");
         
-        sport_class = controller.showMySportClass(0);
+        sport_class = controller.showMySportClassTeacher(0);
         cbSport.setSelectedItem(sport_class.getSportName());
         cbWeekDay.setSelectedItem(sport_class.getWeekDay());
         cbEndHH.setSelectedItem( sport_class.getEndHour_to_s());
@@ -355,7 +355,7 @@ public class ShowSportClassesGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_cbEndMMActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        sport_class = controller.showMySportClass(1);
+        sport_class = controller.showMySportClassTeacher(1);
         cbSport.setSelectedItem(sport_class.getSportName());
         cbWeekDay.setSelectedItem(sport_class.getWeekDay());
         cbEndHH.setSelectedItem( sport_class.getEndHour_to_s());
@@ -371,10 +371,9 @@ public class ShowSportClassesGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-
-        controller.deleteSportClass();
+       controller.deleteSportClass();
         try{
-            sport_class = controller.showMySportClass(0);
+            sport_class = controller.showMySportClassTeacher(0);
             cbSport.setSelectedItem(sport_class.getSportName());
             cbWeekDay.setSelectedItem(sport_class.getWeekDay());
             cbEndHH.setSelectedItem( sport_class.getEndHour_to_s());
@@ -393,7 +392,7 @@ public class ShowSportClassesGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        sport_class = controller.showMySportClass(-1);
+        sport_class = controller.showMySportClassTeacher(-1);
         cbSport.setSelectedItem(sport_class.getSportName());
         cbWeekDay.setSelectedItem(sport_class.getWeekDay());
         cbEndHH.setSelectedItem( sport_class.getEndHour_to_s());

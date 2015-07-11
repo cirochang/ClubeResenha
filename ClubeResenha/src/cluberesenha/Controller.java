@@ -48,12 +48,12 @@ public class Controller {
     //Teacher
     public void createSportClass(String sport_name,String description,String local,String week_day,int start_hour,int start_min,int end_hour,int end_min){
         Teacher current_teacher = (Teacher) current_user;
-        current_teacher.createSportClass(sport_name, description, local, week_day, start_hour, start_min, end_hour, end_min);
+        current_teacher.addSportClass(sport_name, description, local, week_day, start_hour, start_min, end_hour, end_min);
     }
     
-    public SportClass showMySportClass(int direction){
+    public SportClass showMySportClassTeacher(int direction){
         Teacher current_teacher = (Teacher) current_user;
-        return current_teacher.getSportClass(direction);
+        return current_teacher.getMySportClassTeacher(direction);
     }
     
     public void editSportClass(String sport_name,String description,String local,String week_day,int start_hour,int start_min,int end_hour,int end_min){
@@ -78,15 +78,32 @@ public class Controller {
         current_master_user.registerUser(user_list, user_type, first_name, last_name, email, password, phone, rg, cpf);
     }
     
-    public void deleteUser(User user){
+    public void deleteUser(){
         MasterUser current_master_user = (MasterUser) current_user;
-        current_master_user.deleteUser(user_list, user);
+        current_master_user.deleteUser(user_list);
     }
     
     //Manager Buttons
-    public void editUser(User user){
+    public void editUser(String user_type, String matricula, String first_name, String last_name, String email, String password, String phone, String rg, String cpf){
        Manager current_manager = (Manager) current_user;
-       current_manager.editUser(user_list, user);
+       current_manager.editUser(user_list, user_type, matricula, first_name, last_name, email, password, phone, rg, cpf);
+    }
+    
+    //ALL USERS
+    public SportClass showMySportClassStudent(int direction){
+        return current_user.getMySportClassStudent(direction);
+    }
+     
+    public SportClass showSportClass(int direction){
+        return current_user.getAllSportClass(direction);
+    }
+    
+    public void enrollSportClass(SportClass sport_class){
+        sport_class.enrollStudent(current_user.getMatricula());
+    }
+    
+    public void unrollSportClass(SportClass sport_class){
+        sport_class.unrollStudent(current_user.getMatricula());
     }
     
     //Getters and Setters
@@ -94,24 +111,23 @@ public class Controller {
         return current_user;
     }
     
-    //Helpers
+    //Users button
+    public User showUser(int direction){
+        return user_list.getUser(direction);
+    }
+    
+    public User showUser(int direction,String user_type){
+        return user_list.getUser(direction, user_type);
+    }
+    
+    //helper
     public User getLastUser(){
-        return user_list.getLastUser();
+        return user_list.getLast();
     }
     
-    public User[] getAllUsers(){
-        return user_list.getAllUsers();
+    public User getUserByMatricula(String matricula){
+        return user_list.getUserByMatricula(matricula);
     }
-    
-    public User[] getAllUsers(String user_type){
-        return user_list.getAllUsers(user_type);
-    }
-    
-    
-   
-    
-    
-    
     
     
 }

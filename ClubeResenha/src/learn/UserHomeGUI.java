@@ -181,7 +181,13 @@ public class UserHomeGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSportsActionPerformed
-
+        try{
+            UserShowSportClassesGUI itemloader = new UserShowSportClassesGUI();
+            itemloader.setVisible(true);
+            this.setVisible(false);
+        }catch(Exception e){
+            
+        } 
     }//GEN-LAST:event_btSportsActionPerformed
 
     private void btLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLogoutActionPerformed
@@ -207,21 +213,23 @@ public class UserHomeGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btAcademyActionPerformed
 
     private void btSpecialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSpecialActionPerformed
-        switch(controller.getCurrentUser().getTypeName()) {
+        switch(controller.getCurrentUser().getUserType()) {
         case "Secretary":
             AdmSecretaryGUI itemloader = new AdmSecretaryGUI();
             itemloader.setVisible(true);
             this.setVisible(false);
+            break;
         case "Master":
             AdmMasterGUI itemloader2 = new AdmMasterGUI();
             itemloader2.setVisible(true);
             this.setVisible(false);
+            break;
         case "Teacher":
             TeacherGUI itemloader3 = new TeacherGUI();
             itemloader3.setVisible(true);
             this.setVisible(false);
+            break;
         default :
-            
             break;
         }
     }//GEN-LAST:event_btSpecialActionPerformed

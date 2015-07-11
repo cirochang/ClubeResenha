@@ -20,21 +20,21 @@ public class ShowMembers extends javax.swing.JFrame {
      */
     final Controller controller;
     private int num_user = 0;
-    final User[] user;
+    private User user;
     
     public ShowMembers() {
         initComponents();
         this.controller = Controller.getInstance();
-        jLabel1.setText(controller.getCurrentUser().getFullName());
-        user = controller.getAllUsers("Member");
-        txtFirstName.setText(user[num_user].getFirstName());
-        txtLastName.setText(user[num_user].getLastName());
-        txtPhone.setText(user[num_user].getPhone());
-        txtPassword.setText(user[num_user].getPassword());
-        txtRg.setText(user[num_user].getRg());
-        txtCpf.setText(user[num_user].getCpf());
-        txtEmail.setText(user[num_user].getEmail());
-        labelMatricula.setText(user[num_user].getMatricula());
+        jLabel1.setText(controller.getCurrentUser().getFirstName()+ " "+ controller.getCurrentUser().getLastName());
+        user = controller.showUser(0, "Member");
+        txtFirstName.setText(user.getFirstName());
+        txtLastName.setText(user.getLastName());
+        txtPhone.setText(user.getPhone());
+        txtPassword.setText(user.getPassword());
+        txtRg.setText(user.getRg());
+        txtCpf.setText(user.getCpf());
+        txtEmail.setText(user.getEmail());
+        labelMatricula.setText(user.getMatricula());
     }
 
     /**
@@ -270,15 +270,8 @@ public class ShowMembers extends javax.swing.JFrame {
             String phone = txtPhone.getText();
             String rg = txtRg.getText();
             String cpf = txtCpf.getText();
-            user[num_user].setFirstName(first_name);
-            user[num_user].setLastName(last_name);
-            user[num_user].setPassword(password);
-            user[num_user].setEmail(email);
-            user[num_user].setPhone(phone);
-            user[num_user].setRg(rg);
-            user[num_user].setCpf(cpf);
-            controller.editUser(user[num_user]);
-            JOptionPane.showMessageDialog(null, "The Member " + user[num_user].getFirstName() + " " +user[num_user].getLastName() + " was updated successfull");            
+            controller.editUser(user.getUserType(), user.getMatricula(),first_name, last_name, email, password, phone, rg, cpf);
+            JOptionPane.showMessageDialog(null, "The "+ user.getUserType() +" " + user.getFullName() + " was updated successfull");            
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Sorry, An error has occurred...");
@@ -286,37 +279,27 @@ public class ShowMembers extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(num_user == user.length - 1){
-            num_user = 0;
-        }
-        else{
-            num_user += 1;
-        }
-        txtFirstName.setText(user[num_user].getFirstName());
-        txtLastName.setText(user[num_user].getLastName());
-        txtPhone.setText(user[num_user].getPhone());
-        txtPassword.setText(user[num_user].getPassword());
-        txtRg.setText(user[num_user].getRg());
-        txtCpf.setText(user[num_user].getCpf());
-        txtEmail.setText(user[num_user].getEmail());
-        labelMatricula.setText(user[num_user].getMatricula());
+        user = controller.showUser(1, "Member");
+        txtFirstName.setText(user.getFirstName());
+        txtLastName.setText(user.getLastName());
+        txtPhone.setText(user.getPhone());
+        txtPassword.setText(user.getPassword());
+        txtRg.setText(user.getRg());
+        txtCpf.setText(user.getCpf());
+        txtEmail.setText(user.getEmail());
+        labelMatricula.setText(user.getMatricula());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(num_user == 0){
-            num_user = user.length - 1;
-        }
-        else{
-            num_user -= 1;
-        }
-        txtFirstName.setText(user[num_user].getFirstName());
-        txtLastName.setText(user[num_user].getLastName());
-        txtPhone.setText(user[num_user].getPhone());
-        txtPassword.setText(user[num_user].getPassword());
-        txtRg.setText(user[num_user].getRg());
-        txtCpf.setText(user[num_user].getCpf());
-        txtEmail.setText(user[num_user].getEmail());
-        labelMatricula.setText(user[num_user].getMatricula());
+        user = controller.showUser(-1, "Member");
+        txtFirstName.setText(user.getFirstName());
+        txtLastName.setText(user.getLastName());
+        txtPhone.setText(user.getPhone());
+        txtPassword.setText(user.getPassword());
+        txtRg.setText(user.getRg());
+        txtCpf.setText(user.getCpf());
+        txtEmail.setText(user.getEmail());
+        labelMatricula.setText(user.getMatricula());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

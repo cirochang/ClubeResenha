@@ -21,21 +21,21 @@ public class ShowUsersGUI extends javax.swing.JFrame {
      */
     final Controller controller;
     private int num_user = 0;
-    final User[] user;
+    private User user;
     
     public ShowUsersGUI() {
         initComponents();
         this.controller = Controller.getInstance();
         jLabel1.setText(controller.getCurrentUser().getFirstName()+ " "+ controller.getCurrentUser().getLastName());
-        user = controller.getAllUsers();
-        txtFirstName.setText(user[num_user].getFirstName());
-        txtLastName.setText(user[num_user].getLastName());
-        txtPhone.setText(user[num_user].getPhone());
-        txtPassword.setText(user[num_user].getPassword());
-        txtRg.setText(user[num_user].getRg());
-        txtCpf.setText(user[num_user].getCpf());
-        txtEmail.setText(user[num_user].getEmail());
-        labelMatricula.setText(user[num_user].getMatricula());
+        user = controller.showUser(0);
+        txtFirstName.setText(user.getFirstName());
+        txtLastName.setText(user.getLastName());
+        txtPhone.setText(user.getPhone());
+        txtPassword.setText(user.getPassword());
+        txtRg.setText(user.getRg());
+        txtCpf.setText(user.getCpf());
+        txtEmail.setText(user.getEmail());
+        labelMatricula.setText(user.getMatricula());
     }
 
     /**
@@ -264,15 +264,8 @@ public class ShowUsersGUI extends javax.swing.JFrame {
             String phone = txtPhone.getText();
             String rg = txtRg.getText();
             String cpf = txtCpf.getText();
-            user[num_user].setFirstName(first_name);
-            user[num_user].setLastName(last_name);
-            user[num_user].setPassword(password);
-            user[num_user].setEmail(email);
-            user[num_user].setPhone(phone);
-            user[num_user].setRg(rg);
-            user[num_user].setCpf(cpf);
-            controller.editUser(user[num_user]);
-            JOptionPane.showMessageDialog(null, "The Member " + user[num_user].getFirstName() + " " +user[num_user].getLastName() + " was updated successfull");            
+            controller.editUser(user.getUserType(), user.getMatricula(),first_name, last_name, email, password, phone, rg, cpf);
+            JOptionPane.showMessageDialog(null, "The "+ user.getUserType() +" " + user.getFullName() + " was updated successfull");            
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Sorry, An error has occurred...");
@@ -280,37 +273,27 @@ public class ShowUsersGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(num_user == user.length - 1){
-            num_user = 0;
-        }
-        else{
-            num_user += 1;
-        }
-        txtFirstName.setText(user[num_user].getFirstName());
-        txtLastName.setText(user[num_user].getLastName());
-        txtPhone.setText(user[num_user].getPhone());
-        txtPassword.setText(user[num_user].getPassword());
-        txtRg.setText(user[num_user].getRg());
-        txtCpf.setText(user[num_user].getCpf());
-        txtEmail.setText(user[num_user].getEmail());
-        labelMatricula.setText(user[num_user].getMatricula());
+        user = controller.showUser(-1);
+        txtFirstName.setText(user.getFirstName());
+        txtLastName.setText(user.getLastName());
+        txtPhone.setText(user.getPhone());
+        txtPassword.setText(user.getPassword());
+        txtRg.setText(user.getRg());
+        txtCpf.setText(user.getCpf());
+        txtEmail.setText(user.getEmail());
+        labelMatricula.setText(user.getMatricula());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(num_user == 0){
-            num_user = user.length - 1;
-        }
-        else{
-            num_user -= 1;
-        }
-        txtFirstName.setText(user[num_user].getFirstName());
-        txtLastName.setText(user[num_user].getLastName());
-        txtPhone.setText(user[num_user].getPhone());
-        txtPassword.setText(user[num_user].getPassword());
-        txtRg.setText(user[num_user].getRg());
-        txtCpf.setText(user[num_user].getCpf());
-        txtEmail.setText(user[num_user].getEmail());
-        labelMatricula.setText(user[num_user].getMatricula());
+        user = controller.showUser(1);
+        txtFirstName.setText(user.getFirstName());
+        txtLastName.setText(user.getLastName());
+        txtPhone.setText(user.getPhone());
+        txtPassword.setText(user.getPassword());
+        txtRg.setText(user.getRg());
+        txtCpf.setText(user.getCpf());
+        txtEmail.setText(user.getEmail());
+        labelMatricula.setText(user.getMatricula());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -320,22 +303,28 @@ public class ShowUsersGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        controller.deleteUser();
         try{
-            if(controller.getCurrentUser().getMatricula().equals(user[num_user].getMatricula())){
-                JOptionPane.showMessageDialog(null, "You can't dellete yourself");
-               
+            if(controller.getCurrentUser() != user){
+                user = controller.showUser(0);
+                txtFirstName.setText(user.getFirstName());
+                txtLastName.setText(user.getLastName());
+                txtPhone.setText(user.getPhone());
+                txtPassword.setText(user.getPassword());
+                txtRg.setText(user.getRg());
+                txtCpf.setText(user.getCpf());
+                txtEmail.setText(user.getEmail());
+                labelMatricula.setText(user.getMatricula());
+                JOptionPane.showMessageDialog(null, "A usuario foi deletado com sucesso.");
             }
             else{
-                 controller.deleteUser(user[num_user]);
-                ShowUsersGUI itemloader = new ShowUsersGUI();
-                itemloader.setVisible(true);
-                this.setVisible(false);
+                JOptionPane.showMessageDialog(null, "Você não pode deletar o seu usuário.");
             }
-        }
-        catch(Exception e){
+        }catch(Exception e){
             AdmMasterGUI itemloader = new AdmMasterGUI();
             itemloader.setVisible(true);
             this.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Todas os usuarios foram deletados");
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
