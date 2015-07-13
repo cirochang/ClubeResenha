@@ -87,6 +87,17 @@ public class UserList {
         return null;
     }
     
+    public User getUserByMatricula(String matricula, String type){
+        for (User user_selected : user) {
+            if (user_selected.getMatricula().equals(matricula) && user_selected.getUserType().equals(type)) {
+                return user_selected;
+            }
+        }
+        return null;
+    }
+    
+
+    
     public boolean existUserByMatricula(String matricula){
         return getUserByMatricula(matricula) != null;
     }
@@ -158,7 +169,7 @@ public class UserList {
             return user_selected;
         }
         else if(direction > getUserSize() || direction < -getUserSize()){
-            return getUser(getUserSize() + 1); //ERROR
+            return null; //ERROR
         }
         else if(direction >= 0){
             return getUser(direction + 1, user_type);
@@ -167,6 +178,45 @@ public class UserList {
             return getUser(direction - 1, user_type);
         }
     }
+    
+    public Member getMemberEmployeed(int direction, String matricula_boss){
+        User user_selected = getUser(direction);
+        if (user_selected.getUserType().equals("Member")){
+            Member member = (Member) user_selected;
+            String matricula_selected = member.getEmployee().getMatriculaBoss();
+            if(matricula_selected != null && matricula_selected.equals(matricula_boss)){
+                return member;
+            }
+        }
+        if(direction > getUserSize() || direction < -getUserSize()){
+            return null; //ERROR
+        }
+        else if(direction >= 0){
+            return getMemberEmployeed(direction + 1, matricula_boss);
+        }
+        else{ 
+            return getMemberEmployeed(direction - 1, matricula_boss);
+        }
+    }
+    
+    public User getUserByPersonalMatricula(int direction, String matricula_personal){
+        User user_selected = getUser(direction);
+        String matricula_selected = user_selected.getAcademySerie().getMatriculaTeacherAcademy();
+        if(matricula_selected != null && matricula_selected.equals(matricula_personal)){
+            return user_selected;
+        }
+        if(direction > getUserSize() || direction < -getUserSize()){
+            return null; //ERROR
+        }
+        else if(direction >= 0){
+            return getUserByPersonalMatricula(direction + 1, matricula_personal);
+        }
+        else{ 
+            return getUserByPersonalMatricula(direction - 1, matricula_personal);
+        }
+    }
+    
+    
     
     public int getUserSize(){
         return user.size();

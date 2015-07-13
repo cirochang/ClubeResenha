@@ -46,4 +46,31 @@ public class CardapioList {
         return this.cardapio_item.get(num_cardapio_item);
     }
     
+    public String printAllCardapioItens(){
+        String print;
+        print = "";
+        String[] type_exist = {"Petisco", "Refeição", "Drink", "Sobremesa"};
+        for (String type_exist_selected : type_exist) {
+            for(CardapioItem item : cardapio_item){
+                if(item.getType().equals(type_exist_selected)){
+                    print += "Name: " + item.getName() + "       Type: " + item.getType()+ "      Description: "+ item.getDescription();
+                }
+            }
+        }
+        return print;
+    }
+    
+    public ArrayList getCardapioItemListOrganized(){
+        ArrayList<String> cardapio_organized = new ArrayList<>();
+        String[] type_exist = {"Petisco", "Refeição", "Drink", "Sobremesa"};
+        for (String type_exist_selected : type_exist) {
+            for(CardapioItem item : cardapio_item){
+                if(item.getType().equals(type_exist_selected)){
+                    cardapio_organized.add("Name: " + item.getName() + "       Type: " + item.getType()+ "      Description: "+ item.getDescription());
+                }
+            }
+        }
+        return cardapio_organized;
+    }
+    
 }

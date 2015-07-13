@@ -5,10 +5,9 @@
  */
 package learn.RestaurantOwner;
 import learn.Teacher.*;
-import learn.AdmMaster.*;
-import learn.AdmSecretary.*;
 import learn.ClubeResenhaGUI;
 import cluberesenha.*;
+import javax.swing.JOptionPane;
 import learn.UserHomeGUI;
 
 /**
@@ -22,12 +21,16 @@ public class RestaurantOwnerGUI extends javax.swing.JFrame {
      * Creates new form AdmSecretaryGUI
      */
     final Controller controller;
+    private Restaurant restaurant;
     
     public RestaurantOwnerGUI() {
         initComponents();
         this.controller = Controller.getInstance();
         jLabel1.setText(controller.getCurrentUser().getFullName());
         jLabel2.setText(controller.getCurrentUser().getTypeName() + " User");
+        restaurant = ((RestaurantOwner) controller.getCurrentUser()).getRestaurant();
+        jTextField1.setText(restaurant.getName());
+        jTextArea1.setText(restaurant.getDescription());
     }
 
     /**
@@ -48,10 +51,16 @@ public class RestaurantOwnerGUI extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Add Cardapio");
+        jButton1.setText("Add Cardapio Item");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -65,7 +74,7 @@ public class RestaurantOwnerGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Show Cardapio");
+        jButton3.setText("Show Cardapio Itens");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -101,6 +110,28 @@ public class RestaurantOwnerGUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Restaurant Name: ");
+
+        jLabel5.setText("Description: ");
+
+        jTextField1.setText("jTextField1");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jButton7.setText("Save Restaurant Settings");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,7 +153,17 @@ public class RestaurantOwnerGUI extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel2))
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField1)
+                            .addComponent(jButton7)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -142,7 +183,17 @@ public class RestaurantOwnerGUI extends javax.swing.JFrame {
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addComponent(jButton7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton4)))
@@ -152,7 +203,7 @@ public class RestaurantOwnerGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        RegisterSportClassGUI itemloader = new RegisterSportClassGUI();
+        AddCardapioItemGUI itemloader = new AddCardapioItemGUI();
         itemloader.setVisible(true);
         this.setVisible(false);  
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -166,7 +217,7 @@ public class RestaurantOwnerGUI extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try{
-            ShowSportClassesGUI itemloader = new ShowSportClassesGUI();
+            ShowCardapioItemGUI itemloader = new ShowCardapioItemGUI();
             itemloader.setVisible(true);
             this.setVisible(false);
         }catch(Exception e){
@@ -181,12 +232,30 @@ public class RestaurantOwnerGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        try{
+        ShowEmployeeGUI itemloader = new ShowEmployeeGUI(restaurant);
+        itemloader.setVisible(true);
+        }
+        catch(Exception e){
+            
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        AddEmployeeGUI itemloader = new AddEmployeeGUI();
+        itemloader.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        restaurant.setName(jTextField1.getText());
+        restaurant.setDescription(jTextArea1.getText());
+        JOptionPane.showMessageDialog(null, "The restaurant settings has been saved sucessfuly");
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,8 +306,14 @@ public class RestaurantOwnerGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

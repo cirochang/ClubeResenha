@@ -12,8 +12,11 @@ package cluberesenha;
  * @author cirochang
  */
 public class RestaurantOwner extends User {
+    private Restaurant restaurant;
     
-    private Restaurant restaurant = new Restaurant();
+    public RestaurantOwner(){
+        restaurant = new Restaurant();
+    }
     
     @Override
     public String getTypeName(){
@@ -28,12 +31,25 @@ public class RestaurantOwner extends User {
         restaurant.getCardapioList().deleteCardapioItem();
     }
     
-    public void getCardapioItem(int direction){
-        restaurant.getCardapioList().getCardapioItem(direction);
+    public CardapioItem getCardapioItem(int direction){
+        return restaurant.getCardapioList().getCardapioItem(direction);
     }
     
     public void editCardapioItem(String name,String type,String description,float price){
         restaurant.getCardapioList().editCardapioItem(name, type, description, price);
     }
+    
+    public Restaurant getRestaurant(){
+        return restaurant;
+    }
+    
+    public void addEmployee(UserList user_list, String matricula, String matricula_boss, String cargo, float salario){
+        ((Member) user_list.getUserByMatricula(matricula,"Member")).getEmployee().setAllParams(matricula_boss, cargo, salario);
+    }
+    
+    public void removeEmployee(UserList user_list, String matricula){
+        ((Member) user_list.getUserByMatricula(matricula,"Member")).getEmployee().setAllParams(null, null, 0);
+    }
+
     
 }

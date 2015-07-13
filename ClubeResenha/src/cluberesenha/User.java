@@ -22,14 +22,14 @@ public abstract class User {
     //protected Date created_at;
     //protected Date updated_at;
     protected Adress adress;
-    protected SportClassList sport_class_list;
-    
-    public User(){
-        this.sport_class_list = SportClassList.getInstance();
-    }
+    protected SportClassList sport_class_list = SportClassList.getInstance();
+    protected AcademySerie academy_serie = new AcademySerie();
     
     public abstract String getTypeName();
     
+    public AcademySerie getAcademySerie(){
+        return this.academy_serie;
+    }
 
     
     //NEED TO IMPLEMENT...

@@ -59,6 +59,10 @@ public class SportClass {
     public boolean searchStudentByMatricula(String matricula){
         return student_list.getStudentByMatricula(matricula) != null;
     }
+    
+    public StudentList getStudentList(){
+        return student_list;
+    }
 
     
     //GETTERS AND SETTERS

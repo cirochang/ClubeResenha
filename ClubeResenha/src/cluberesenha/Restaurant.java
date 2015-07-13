@@ -12,24 +12,19 @@ import java.util.ArrayList;
  * @author cirochang
  */
 public class Restaurant {
-    private CardapioItem cardapio_item;
     private String name;
     private String description;
-    private EmployeeList employee_list;
     private CardapioList cardapio_list;
 
     
     public Restaurant(){
-        cardapio_item = new CardapioItem();
+        cardapio_list = new CardapioList();
         name = "without a name";
         description = "without a description name";
     }
     
     //GET AND SETTERS
 
-    public void setCardapioItem(CardapioItem cardapio_item) {
-        this.cardapio_item = cardapio_item;
-    }
 
     public String getName() {
         return name;
@@ -46,11 +41,6 @@ public class Restaurant {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public EmployeeList getEmployeeList() {
-        return employee_list;
-    }
-
 
     public CardapioList getCardapioList() {
         return cardapio_list;

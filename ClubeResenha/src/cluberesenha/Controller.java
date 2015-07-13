@@ -66,6 +66,39 @@ public class Controller {
         current_teacher.deleteSportClass();
     }
     
+    
+    
+    //Restaurant Owner
+    public void addCardapioItem(String nome, String type, String description, float price){
+        RestaurantOwner current_restaurant_owner = (RestaurantOwner) current_user;
+        current_restaurant_owner.addCardapioItem(nome, type, description, price);
+    }
+    
+    public void editCardapioItem(String name, String type, String description, float price){
+        RestaurantOwner current_restaurant_owner = (RestaurantOwner) current_user;
+        current_restaurant_owner.editCardapioItem(name, type, description, price);
+    }
+    
+    public CardapioItem showMyCardapioItem(int direction){
+        RestaurantOwner current_restaurant_owner = (RestaurantOwner) current_user;
+        return current_restaurant_owner.getCardapioItem(direction);
+    }
+    
+    public void deleteCardapioItem(){
+        RestaurantOwner current_restaurant_owner = (RestaurantOwner) current_user;
+        current_restaurant_owner.removeCardapioItem();
+    }
+    
+    public void addEmployee(String matricula, String matricula_boss, String cargo, float salario){
+        RestaurantOwner current_restaurant_owner = (RestaurantOwner) current_user;
+        current_restaurant_owner.addEmployee(user_list, matricula, matricula_boss, cargo, salario);
+    }
+    
+    public void removeEmployee(String matricula){
+        RestaurantOwner current_restaurant_owner = (RestaurantOwner) current_user;
+        current_restaurant_owner.removeEmployee(user_list, matricula);
+    }     
+    
     //Secretary Buttons
     public void registerMember(String first_name, String last_name, String email, String password, String phone, String rg, String cpf){
         Secretary current_secretary = (Secretary) current_user;
@@ -89,7 +122,26 @@ public class Controller {
        current_manager.editUser(user_list, user_type, matricula, first_name, last_name, email, password, phone, rg, cpf);
     }
     
+    //Personal Trainner Buttons
+    public void createNewSerie(String matricula, String type_serie, String serie){
+        PersonalTrainner current_personal_trainner = (PersonalTrainner) current_user;
+        current_personal_trainner.createNewSerie(user_list,matricula, type_serie, serie);
+    }
+    
+    public User showStudentSerie(int direction){
+        PersonalTrainner current_personal_trainner = (PersonalTrainner) current_user;
+        return current_personal_trainner.getStudentSerie(user_list, direction);
+    }
+    
     //ALL USERS
+    public User showUser(int direction){   //MANAGER??
+        return user_list.getUser(direction);
+    }
+    
+    public User showUser(int direction,String user_type){ //MANAGER??
+        return user_list.getUser(direction, user_type);
+    }
+    
     public SportClass showMySportClassStudent(int direction){
         return current_user.getMySportClassStudent(direction);
     }
@@ -106,20 +158,24 @@ public class Controller {
         sport_class.unrollStudent(current_user.getMatricula());
     }
     
+    public Restaurant showRestaurants(int direction){
+        return ((RestaurantOwner) user_list.getUser(direction, "Restaurant Owner") ).getRestaurant();
+    }
+    
+    public Member showEmployees(int direction){
+        return user_list.getMemberEmployeed(direction, current_user.getMatricula());
+    }
+    
+    public void removeEmployee(){
+        Member member_user = (Member) current_user;
+        member_user.getEmployee().setAllParams(null,null,0);
+    }
+    
     //Getters and Setters
     public User getCurrentUser(){
         return current_user;
     }
-    
-    //Users button
-    public User showUser(int direction){
-        return user_list.getUser(direction);
-    }
-    
-    public User showUser(int direction,String user_type){
-        return user_list.getUser(direction, user_type);
-    }
-    
+
     //helper
     public User getLastUser(){
         return user_list.getLast();
@@ -127,6 +183,10 @@ public class Controller {
     
     public User getUserByMatricula(String matricula){
         return user_list.getUserByMatricula(matricula);
+    }
+    
+    public User getUserByMatricula(String matricula, String type){
+        return user_list.getUserByMatricula(matricula, type);
     }
     
     

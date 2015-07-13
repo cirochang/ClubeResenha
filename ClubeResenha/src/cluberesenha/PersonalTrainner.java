@@ -15,4 +15,12 @@ public class PersonalTrainner extends User{
     public String getTypeName(){
         return "Personal Trainner";
     }
+    
+    public void createNewSerie(UserList user_list, String matricula, String type_serie, String serie){
+        user_list.getUserByMatricula(matricula).getAcademySerie().setAllParams(this.matricula, type_serie, serie);
+    }
+    
+    public User getStudentSerie(UserList user_list, int direction){
+        return user_list.getUserByPersonalMatricula(direction, this.matricula);
+    }
 }

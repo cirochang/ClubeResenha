@@ -17,9 +17,7 @@ public class CardapioItem {
     private String type;
     private String description;
     private float price;
-    
-   
-    
+
     //GET AND SETTERS
     
     public void setAllParams(String name,String type,String description,float price){

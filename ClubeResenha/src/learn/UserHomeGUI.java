@@ -6,8 +6,10 @@
 package learn;
 import learn.AdmMaster.*;
 import learn.AdmSecretary.*;
-import learn.ClubeResenhaGUI;
 import cluberesenha.*;
+import learn.Member.MemberGUI;
+import learn.PersonalTrainner.PersonalTrainnerGUI;
+import learn.RestaurantOwner.RestaurantOwnerGUI;
 import learn.Teacher.TeacherGUI;
 
 /**
@@ -28,7 +30,13 @@ public class UserHomeGUI extends javax.swing.JFrame {
         jLabel1.setText(controller.getCurrentUser().getFullName());
         jLabel2.setText(controller.getCurrentUser().getTypeName() + " User");
         if(controller.getCurrentUser().getTypeName().equals("Member")){
-            btSpecial.setVisible(false);
+            if( ((Member) controller.getCurrentUser()).hasEmployeed() ){
+                btSpecial.setText("Emloyee");
+                btSpecial.setVisible(true);
+            }
+            else{
+                btSpecial.setVisible(false);
+            }
         }    
         else{
             btSpecial.setText(controller.getCurrentUser().getTypeName() + " Functions");
@@ -205,11 +213,25 @@ public class UserHomeGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btMedicalActionPerformed
 
     private void btRestaurantsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRestaurantsActionPerformed
-        // TODO add your handling code here:
+        try{
+        UserShowRestaurantGUI itemloader = new UserShowRestaurantGUI();
+        itemloader.setVisible(true);
+        this.setVisible(false);
+        }
+        catch(Exception e){
+            
+        }
     }//GEN-LAST:event_btRestaurantsActionPerformed
 
     private void btAcademyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAcademyActionPerformed
-        // TODO add your handling code here:
+        try{
+        UserShowSerieGUI itemloader = new UserShowSerieGUI();
+        itemloader.setVisible(true);
+        this.setVisible(false);
+        }
+        catch(Exception e){
+            
+        }
     }//GEN-LAST:event_btAcademyActionPerformed
 
     private void btSpecialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSpecialActionPerformed
@@ -229,6 +251,21 @@ public class UserHomeGUI extends javax.swing.JFrame {
             itemloader3.setVisible(true);
             this.setVisible(false);
             break;
+        case "Restaurant Owner":
+            RestaurantOwnerGUI itemloader4 = new RestaurantOwnerGUI();
+            itemloader4.setVisible(true);
+            this.setVisible(false);
+            break;    
+        case "Member":  
+            MemberGUI itemloader5 = new MemberGUI();
+            itemloader5.setVisible(true);
+            this.setVisible(false);       
+            break;  
+        case "Personal Trainner":
+            PersonalTrainnerGUI itemloader6 = new PersonalTrainnerGUI();
+            itemloader6.setVisible(true);
+            this.setVisible(false);       
+            break;  
         default :
             break;
         }
