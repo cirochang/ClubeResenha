@@ -16,4 +16,13 @@ public class Doctor extends User {
         return "Doctor";
     }
     
+    //NEED TO CHANGE
+    public void createNewMedicalExam(UserList user_list, String matricula, String blood_type, String description){
+        user_list.getUserByMatricula(matricula).getMedicalExam().setAllParams(this.matricula, blood_type, description);
+    }
+    
+    public User getPacientMedicalExam(UserList user_list, int direction){
+        return user_list.getUserByDoctorMatricula(direction, this.matricula);
+    }
+    
 }

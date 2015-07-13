@@ -133,6 +133,17 @@ public class Controller {
         return current_personal_trainner.getStudentSerie(user_list, direction);
     }
     
+    //Doctor Buttons
+    public void createNewMedicalExam(String matricula, String blood_type, String description){
+        Doctor current_doctor = (Doctor) current_user;
+        current_doctor.createNewMedicalExam(user_list,matricula,blood_type,description);
+    }
+    
+    public User showPacientMedicalExam(int direction){
+        Doctor current_doctor = (Doctor) current_user;
+        return current_doctor.getPacientMedicalExam(user_list,direction);
+    }
+    
     //ALL USERS
     public User showUser(int direction){   //MANAGER??
         return user_list.getUser(direction);

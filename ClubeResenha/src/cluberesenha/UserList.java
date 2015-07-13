@@ -216,6 +216,23 @@ public class UserList {
         }
     }
     
+    public User getUserByDoctorMatricula(int direction,String matricula_doctor){
+        User user_selected = getUser(direction);
+        String matricula_selected = user_selected.getMedicalExam().getMatriculaDoctor();
+        if(matricula_selected != null && matricula_selected.equals(matricula_doctor)){
+            return user_selected;
+        }
+        if(direction > getUserSize() || direction < -getUserSize()){
+            return null; //ERROR
+        }
+        else if(direction >= 0){
+            return getUserByPersonalMatricula(direction + 1, matricula_doctor);
+        }
+        else{ 
+            return getUserByPersonalMatricula(direction - 1, matricula_doctor);
+        }
+    }
+    
     
     
     public int getUserSize(){

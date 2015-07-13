@@ -24,11 +24,16 @@ public abstract class User {
     protected Adress adress;
     protected SportClassList sport_class_list = SportClassList.getInstance();
     protected AcademySerie academy_serie = new AcademySerie();
+    protected MedicalExam medical_exam = new MedicalExam();
     
     public abstract String getTypeName();
     
     public AcademySerie getAcademySerie(){
         return this.academy_serie;
+    }
+    
+    public MedicalExam getMedicalExam(){
+        return this.medical_exam;
     }
 
     

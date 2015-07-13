@@ -7,6 +7,7 @@ package learn;
 import learn.AdmMaster.*;
 import learn.AdmSecretary.*;
 import cluberesenha.*;
+import learn.Doctor.DoctorGUI;
 import learn.Member.MemberGUI;
 import learn.PersonalTrainner.PersonalTrainnerGUI;
 import learn.RestaurantOwner.RestaurantOwnerGUI;
@@ -209,7 +210,9 @@ public class UserHomeGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btMoviesActionPerformed
 
     private void btMedicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMedicalActionPerformed
-        // TODO add your handling code here:
+        UserShowMedicalExamGUI itemloader = new UserShowMedicalExamGUI();
+        itemloader.setVisible(true);
+        this.setVisible(false); 
     }//GEN-LAST:event_btMedicalActionPerformed
 
     private void btRestaurantsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRestaurantsActionPerformed
@@ -265,7 +268,12 @@ public class UserHomeGUI extends javax.swing.JFrame {
             PersonalTrainnerGUI itemloader6 = new PersonalTrainnerGUI();
             itemloader6.setVisible(true);
             this.setVisible(false);       
-            break;  
+            break;
+        case "Doctor":
+            DoctorGUI itemloader7 = new DoctorGUI();
+            itemloader7.setVisible(true);
+            this.setVisible(false);       
+            break;
         default :
             break;
         }

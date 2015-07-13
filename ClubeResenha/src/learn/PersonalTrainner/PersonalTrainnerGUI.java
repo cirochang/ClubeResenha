@@ -71,7 +71,7 @@ public class PersonalTrainnerGUI extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Bitstream Charter", 1, 14)); // NOI18N
-        jLabel3.setText("Teacher User Functions");
+        jLabel3.setText("Personal Trainner User Functions");
 
         jLabel1.setText("#{USER_FULL_NAME}");
 
@@ -100,7 +100,7 @@ public class PersonalTrainnerGUI extends javax.swing.JFrame {
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                         .addComponent(jLabel1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
