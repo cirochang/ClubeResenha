@@ -66,7 +66,26 @@ public class Controller {
         current_teacher.deleteSportClass();
     }
     
+    //Cinema Owner
+    public void addMovie(String title, String cast, String direction, String genre, String synopsis, String distributor, int classification){
+        CinemaOwner current_cinema_owner = (CinemaOwner) current_user;
+        current_cinema_owner.addMovie(title, cast, direction, genre, synopsis, distributor, classification);
+    }
     
+    public void editMovie(String title, String cast, String direction, String genre, String synopsis, String distributor, int classification){
+        CinemaOwner current_cinema_owner = (CinemaOwner) current_user;
+        current_cinema_owner.editMovie(title, cast, direction, genre, synopsis, distributor, classification);
+    }
+    
+    public Movie showMyMovie(int direction){
+        CinemaOwner current_cinema_owner = (CinemaOwner) current_user;
+        return current_cinema_owner.getMovie(direction);
+    }
+    
+    public void deleteMovie(){
+        CinemaOwner current_cinema_owner = (CinemaOwner) current_user;
+        current_cinema_owner.removeMovie();
+    }
     
     //Restaurant Owner
     public void addCardapioItem(String nome, String type, String description, float price){
@@ -90,12 +109,12 @@ public class Controller {
     }
     
     public void addEmployee(String matricula, String matricula_boss, String cargo, float salario){
-        RestaurantOwner current_restaurant_owner = (RestaurantOwner) current_user;
+        Manager current_restaurant_owner = (Manager) current_user;
         current_restaurant_owner.addEmployee(user_list, matricula, matricula_boss, cargo, salario);
     }
     
     public void removeEmployee(String matricula){
-        RestaurantOwner current_restaurant_owner = (RestaurantOwner) current_user;
+        Manager current_restaurant_owner = (Manager) current_user;
         current_restaurant_owner.removeEmployee(user_list, matricula);
     }     
     
@@ -143,6 +162,7 @@ public class Controller {
         Doctor current_doctor = (Doctor) current_user;
         return current_doctor.getPacientMedicalExam(user_list,direction);
     }
+    
     
     //ALL USERS
     public User showUser(int direction){   //MANAGER??

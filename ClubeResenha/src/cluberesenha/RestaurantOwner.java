@@ -11,7 +11,7 @@ package cluberesenha;
  * @author cirochang
  * @author cirochang
  */
-public class RestaurantOwner extends User {
+public class RestaurantOwner extends Manager {
     private Restaurant restaurant;
     
     public RestaurantOwner(){
@@ -41,14 +41,6 @@ public class RestaurantOwner extends User {
     
     public Restaurant getRestaurant(){
         return restaurant;
-    }
-    
-    public void addEmployee(UserList user_list, String matricula, String matricula_boss, String cargo, float salario){
-        ((Member) user_list.getUserByMatricula(matricula,"Member")).getEmployee().setAllParams(matricula_boss, cargo, salario);
-    }
-    
-    public void removeEmployee(UserList user_list, String matricula){
-        ((Member) user_list.getUserByMatricula(matricula,"Member")).getEmployee().setAllParams(null, null, 0);
     }
 
     

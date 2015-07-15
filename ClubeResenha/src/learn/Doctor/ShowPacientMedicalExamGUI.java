@@ -345,7 +345,7 @@ public class ShowPacientMedicalExamGUI extends javax.swing.JFrame {
         user.getMedicalExam().setBloodType(blood_type);
         user.getMedicalExam().setDescription(description);
         user.getMedicalExam().updateDate();
-        JOptionPane.showMessageDialog(null, "The user serie has been updated");
+        JOptionPane.showMessageDialog(null, "The Medical Exam has been updated");
         user = controller.showPacientMedicalExam(0);
         Interface();
     }//GEN-LAST:event_jButton5ActionPerformed

@@ -226,10 +226,10 @@ public class UserList {
             return null; //ERROR
         }
         else if(direction >= 0){
-            return getUserByPersonalMatricula(direction + 1, matricula_doctor);
+            return getUserByDoctorMatricula(direction + 1, matricula_doctor);
         }
         else{ 
-            return getUserByPersonalMatricula(direction - 1, matricula_doctor);
+            return getUserByDoctorMatricula(direction - 1, matricula_doctor);
         }
     }
     

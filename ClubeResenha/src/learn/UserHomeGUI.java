@@ -7,6 +7,7 @@ package learn;
 import learn.AdmMaster.*;
 import learn.AdmSecretary.*;
 import cluberesenha.*;
+import learn.CinemaOwner.CinemaOwnerGUI;
 import learn.Doctor.DoctorGUI;
 import learn.Member.MemberGUI;
 import learn.PersonalTrainner.PersonalTrainnerGUI;
@@ -272,6 +273,11 @@ public class UserHomeGUI extends javax.swing.JFrame {
         case "Doctor":
             DoctorGUI itemloader7 = new DoctorGUI();
             itemloader7.setVisible(true);
+            this.setVisible(false);       
+            break;
+        case "Cinema Owner":
+            CinemaOwnerGUI itemloader8 = new CinemaOwnerGUI();
+            itemloader8.setVisible(true);
             this.setVisible(false);       
             break;
         default :

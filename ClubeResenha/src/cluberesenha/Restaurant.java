@@ -22,7 +22,6 @@ public class Restaurant {
         name = "without a name";
         description = "without a description name";
     }
-    
     //GET AND SETTERS
 
 
