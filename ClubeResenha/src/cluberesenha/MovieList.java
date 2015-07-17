@@ -45,4 +45,21 @@ public class MovieList {
         return this.movie.get(num_movie);
     }
     
+    public String[] getMovieNames(){
+        String[] movie_name = new String[movie.size()]; 
+        for(int i=0; i< movie.size() ; i++){
+            movie_name[i] = movie.get(i).getTitle();
+        }
+        return movie_name;
+    }
+    
+    public Movie getMovieByName(String movie_name){
+        for(Movie movie_selected : movie){
+            if(movie_selected.getTitle().equals(movie_name)){
+                return movie_selected;
+            }
+        }
+        return null;
+    }
+    
 }

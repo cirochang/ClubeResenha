@@ -13,9 +13,12 @@ public class CinemaOwner extends Manager{
     
     private Cinema cinema = new Cinema();
     
-    public void addSession(int num_room, String week_day, int start_hour, int start_min, int end_hour, int end_min){
-        Movie movie = cinema.getMovieList().getMovie();
-        cinema.getSessionList().createSession(movie, num_room, week_day, start_hour, start_min, end_hour, end_min);
+    public void addSession(String movie_name, int room, String week_days, int start_hour, int start_min, int end_hour, int end_min){
+        cinema.addSession(movie_name, room, week_days, start_hour, start_min, end_hour, end_min);
+    }
+    
+    public void editSession(String movie_name, int room, String week_days, int start_hour, int start_min, int end_hour, int end_min){
+         cinema.editSession(movie_name, room, week_days, start_hour, start_min, end_hour, end_min);
     }
 
     public void removeSession(){
@@ -51,14 +54,6 @@ public class CinemaOwner extends Manager{
     
     public Cinema getCinema(){
         return cinema;
-    }
-    
-    public void addEmployee(UserList user_list, String matricula, String matricula_boss, String cargo, float salario){
-        ((Member) user_list.getUserByMatricula(matricula,"Member")).getEmployee().setAllParams(matricula_boss, cargo, salario);
-    }
-    
-    public void removeEmployee(UserList user_list, String matricula){
-        ((Member) user_list.getUserByMatricula(matricula,"Member")).getEmployee().setAllParams(null, null, 0);
     }
 
     

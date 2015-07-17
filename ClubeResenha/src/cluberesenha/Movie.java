@@ -17,7 +17,6 @@ public class Movie {
     private String synopsis;
     private String distributor;
     private int classification;
-    private SessionList session_list = new SessionList();
     
     public void setAllParams(String title, String cast, String direction, String genre, String synopsis, String distributor, int classification){
         this.title = title;
@@ -84,9 +83,6 @@ public class Movie {
     public int getClassification() {
         return classification;
     }
-    
-    public SessionList getSessionList(){
-        return session_list;
-    }
+
     
 }

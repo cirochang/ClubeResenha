@@ -27,82 +27,86 @@ public class Session {
         this.end_min = end_min;
         this.movie = movie;
     }
+    
+    public Movie getMovie(){
+        return this.movie;
+    }
    
     public String getStartMin_to_s(){
-        if (getStart_min() < 10){
-            return "0" + getStart_min();
+        if (getStartMin() < 10){
+            return "0" + getStartMin();
         }
         else{
-            return "" + getStart_min();
+            return "" + getStartMin();
         }
     }
     
     public String getStartHour_to_s(){
-        if (getStart_hour() < 10){
-            return "0" + getStart_hour();
+        if (getStartHour() < 10){
+            return "0" + getStartHour();
         }
         else{
-            return "" + getStart_hour();
+            return "" + getStartHour();
         }
     }
     
     public String getEndMin_to_s(){
-        if (getEnd_min() < 10){
-            return "0" + getEnd_min();
+        if (getEndMin() < 10){
+            return "0" + getEndMin();
         }
         else{
-            return "" + getEnd_min();
+            return "" + getEndMin();
         }
     }
     
     public String getEndHour_to_s(){
-        if (getEnd_hour() < 10){
-            return "0" + getEnd_hour();
+        if (getEndHour() < 10){
+            return "0" + getEndHour();
         }
         else{
-            return "" + getEnd_hour();
+            return "" + getEndHour();
         }
     }
 
     /**
      * @return the num_room
      */
-    public int getNum_room() {
+    public int getNumRoom() {
         return num_room;
     }
 
     /**
      * @return the week_day
      */
-    public String getWeek_day() {
+    public String getWeekDay() {
         return week_day;
     }
 
     /**
      * @return the start_hour
      */
-    public int getStart_hour() {
+    public int getStartHour() {
         return start_hour;
     }
 
     /**
      * @return the start_min
      */
-    public int getStart_min() {
+    public int getStartMin() {
         return start_min;
     }
 
     /**
      * @return the end_hour
      */
-    public int getEnd_hour() {
+    public int getEndHour() {
         return end_hour;
     }
 
     /**
      * @return the end_min
      */
-    public int getEnd_min() {
+    public int getEndMin() {
         return end_min;
     }
     

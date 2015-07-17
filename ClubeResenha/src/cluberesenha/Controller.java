@@ -87,6 +87,26 @@ public class Controller {
         current_cinema_owner.removeMovie();
     }
     
+    public void addSession(String movie_name, int room, String week_days, int start_hour, int start_min, int end_hour, int end_min){
+        CinemaOwner current_cinema_owner = (CinemaOwner) current_user;
+        current_cinema_owner.addSession(movie_name, room, week_days, start_hour, start_min, end_hour, end_min);
+    }
+    
+    public Session showMySession(int direction){
+        CinemaOwner current_cinema_owner = (CinemaOwner) current_user;
+        return current_cinema_owner.getSession(direction);
+    }
+    
+    public void editSession(String movie_name, int room, String week_days, int start_hour, int start_min, int end_hour, int end_min){
+        CinemaOwner current_cinema_owner = (CinemaOwner) current_user;
+        current_cinema_owner.editSession(movie_name, room, week_days, start_hour, start_min, end_hour, end_min);
+    }
+    
+    public void deleteSession(){
+        CinemaOwner current_cinema_owner = (CinemaOwner) current_user;
+        current_cinema_owner.removeSession();
+    }
+    
     //Restaurant Owner
     public void addCardapioItem(String nome, String type, String description, float price){
         RestaurantOwner current_restaurant_owner = (RestaurantOwner) current_user;
@@ -169,7 +189,7 @@ public class Controller {
         return user_list.getUser(direction);
     }
     
-    public User showUser(int direction,String user_type){ //MANAGER??
+    public User showUser(int direction,String user_type){ 
         return user_list.getUser(direction, user_type);
     }
     
@@ -206,8 +226,7 @@ public class Controller {
     public User getCurrentUser(){
         return current_user;
     }
-
-    //helper
+    
     public User getLastUser(){
         return user_list.getLast();
     }

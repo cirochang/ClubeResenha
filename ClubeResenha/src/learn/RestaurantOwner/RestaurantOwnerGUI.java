@@ -235,6 +235,7 @@ public class RestaurantOwnerGUI extends javax.swing.JFrame {
         try{
         ShowEmployeeGUI itemloader = new ShowEmployeeGUI(restaurant);
         itemloader.setVisible(true);
+        this.setVisible(false);
         }
         catch(Exception e){
             

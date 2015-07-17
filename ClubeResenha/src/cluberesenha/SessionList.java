@@ -46,4 +46,21 @@ public class SessionList {
         return this.session.get(num_session);
     }
     
+    public Session getSessionByMovie(int direction, Movie movie_correct){
+        Session session_selected = getSession(direction);
+        Movie movie_selected = session_selected.getMovie();
+        if(movie_selected != null && movie_selected.equals(movie_correct)){
+            return session_selected;
+        }
+        if(direction > session.size() || direction < -session.size()){
+            return null; //ERROR
+        }
+        else if(direction >= 0){
+            return getSessionByMovie(direction + 1, movie_correct);
+        }
+        else{ 
+            return getSessionByMovie(direction - 1, movie_correct);
+        }
+    }
+    
 }

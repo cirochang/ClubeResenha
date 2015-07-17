@@ -207,7 +207,14 @@ public class UserHomeGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btLogoutActionPerformed
 
     private void btMoviesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMoviesActionPerformed
-        
+        try{
+            UserShowCinemasGUI itemloader = new UserShowCinemasGUI();
+            itemloader.setVisible(true);
+            this.setVisible(false);
+        }catch(Exception e){
+            
+        }
+         
     }//GEN-LAST:event_btMoviesActionPerformed
 
     private void btMedicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMedicalActionPerformed
