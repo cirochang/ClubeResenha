@@ -68,7 +68,6 @@ public class ShowMembers extends javax.swing.JFrame {
         txtPhone = new javax.swing.JTextField();
         labelMatricula = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -138,9 +137,6 @@ public class ShowMembers extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Bitstream Charter", 1, 14)); // NOI18N
-        jLabel11.setText("HOME");
-
         jLabel12.setFont(new java.awt.Font("Bitstream Charter", 1, 14)); // NOI18N
         jLabel12.setText("Register Member");
 
@@ -196,11 +192,6 @@ public class ShowMembers extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)))
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(125, 125, 125)
-                    .addComponent(jLabel11)
-                    .addContainerGap(125, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,11 +242,6 @@ public class ShowMembers extends javax.swing.JFrame {
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jButton4))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(152, 152, 152)
-                    .addComponent(jLabel11)
-                    .addContainerGap(153, Short.MAX_VALUE)))
         );
 
         pack();
@@ -354,7 +340,6 @@ public class ShowMembers extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

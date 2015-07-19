@@ -120,6 +120,11 @@ public class UserHomeGUI extends javax.swing.JFrame {
         });
 
         btBill.setText("Show my Bill History");
+        btBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBillActionPerformed(evt);
+            }
+        });
 
         btSpecial.setText("#{SPECIAL BUTTON}");
         btSpecial.addActionListener(new java.awt.event.ActionListener() {
@@ -218,9 +223,14 @@ public class UserHomeGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btMoviesActionPerformed
 
     private void btMedicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMedicalActionPerformed
+        try{
         UserShowMedicalExamGUI itemloader = new UserShowMedicalExamGUI();
         itemloader.setVisible(true);
         this.setVisible(false); 
+        }
+        catch(Exception e){
+            
+        }
     }//GEN-LAST:event_btMedicalActionPerformed
 
     private void btRestaurantsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRestaurantsActionPerformed
@@ -291,6 +301,12 @@ public class UserHomeGUI extends javax.swing.JFrame {
             break;
         }
     }//GEN-LAST:event_btSpecialActionPerformed
+
+    private void btBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBillActionPerformed
+        UserShowBillGUI itemloader8 = new UserShowBillGUI();
+        itemloader8.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btBillActionPerformed
 
     /**
      * @param args the command line arguments

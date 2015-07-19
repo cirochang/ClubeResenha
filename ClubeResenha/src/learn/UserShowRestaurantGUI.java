@@ -65,7 +65,6 @@ public class UserShowRestaurantGUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jDescription = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
         jRestaurantName = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -107,13 +106,6 @@ public class UserShowRestaurantGUI extends javax.swing.JFrame {
 
         jDescription.setText("#{description}");
 
-        jButton7.setText("Reserve");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
         jLabel24.setText("Restaurant: ");
 
         jRestaurantName.setText("#{restaurant_name}");
@@ -143,9 +135,7 @@ public class UserShowRestaurantGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton3)
@@ -194,8 +184,7 @@ public class UserShowRestaurantGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton1)
-                    .addComponent(jButton7))
+                    .addComponent(jButton1))
                 .addGap(46, 46, 46)
                 .addComponent(jButton3))
         );
@@ -228,10 +217,6 @@ public class UserShowRestaurantGUI extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-
-    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,7 +348,6 @@ public class UserShowRestaurantGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton7;
     private javax.swing.JList jCardapio;
     private javax.swing.JLabel jDescription;
     private javax.swing.JLabel jLabel1;

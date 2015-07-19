@@ -17,6 +17,7 @@ public class Session {
     private int end_hour;
     private int end_min;
     private Movie movie;
+    private ReserveList reserve_list = new ReserveList();
     
     public void setAllParams(Movie movie, int num_room, String week_day, int start_hour, int start_min, int end_hour, int end_min){
         this.num_room = num_room;
@@ -26,6 +27,10 @@ public class Session {
         this.end_hour = end_hour;
         this.end_min = end_min;
         this.movie = movie;
+    }
+    
+    public ReserveList getReserveList(){
+        return reserve_list;
     }
     
     public Movie getMovie(){
@@ -108,6 +113,14 @@ public class Session {
      */
     public int getEndMin() {
         return end_min;
+    }
+    
+    public void createReserve(int reserve_num, String matricula){
+        reserve_list.createReserve(reserve_num, matricula);
+    }
+    
+    public boolean checkReserve(String matricula){
+        return reserve_list.checkReserveByMatricula(matricula);
     }
     
 }

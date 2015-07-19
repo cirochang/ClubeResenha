@@ -184,7 +184,7 @@ public class Controller {
     }
     
     
-    //ALL USERS
+    //ALL USERS    
     public User showUser(int direction){   //MANAGER??
         return user_list.getUser(direction);
     }
@@ -223,6 +223,12 @@ public class Controller {
     }
     
     //Getters and Setters
+    public void createBill(String matricula_receive, String matricula_pay, float credit, String description){
+        user_list.getUserByMatricula(matricula_receive).getBillList().createBill(credit, description);
+        user_list.getUserByMatricula(matricula_pay).getBillList().createBill(-credit, description);
+    }
+    
+    
     public User getCurrentUser(){
         return current_user;
     }

@@ -25,11 +25,16 @@ public abstract class User {
     protected SportClassList sport_class_list = SportClassList.getInstance();
     protected AcademySerie academy_serie = new AcademySerie();
     protected MedicalExam medical_exam = new MedicalExam();
+    protected BillList bill_list = new BillList();
     
     public abstract String getTypeName();
     
     public AcademySerie getAcademySerie(){
         return this.academy_serie;
+    }
+    
+    public BillList getBillList(){
+        return this.bill_list;
     }
     
     public MedicalExam getMedicalExam(){
