@@ -11,6 +11,7 @@ import java.util.ArrayList;
  *
  * @author cirochang
  */
+
 public class CardapioList {
     private ArrayList<CardapioItem> cardapio_item = new ArrayList<>();
     private int num_cardapio_item = 0;

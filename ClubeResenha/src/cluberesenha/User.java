@@ -8,6 +8,8 @@ package cluberesenha;
  *
  * @author cirochang
  */
+
+//A classe User faz o papel de Template Method, pois a função getTypeName() define o esqueleto dessa função para as subclasses.
 public abstract class User {
     protected String matricula;
     protected String user_type;
@@ -21,7 +23,6 @@ public abstract class User {
     //protected Date birth_date = new Date();
     //protected Date created_at;
     //protected Date updated_at;
-    protected Adress adress;
     protected SportClassList sport_class_list = SportClassList.getInstance();
     protected AcademySerie academy_serie = new AcademySerie();
     protected MedicalExam medical_exam = new MedicalExam();

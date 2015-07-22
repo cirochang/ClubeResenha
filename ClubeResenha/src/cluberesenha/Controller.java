@@ -9,6 +9,8 @@ package cluberesenha;
  *
  * @author cirochang
  */
+
+//A classe Controller usa o padrão de projeto Slingleton, pois precisamos que todas as interfaces recebam o mesmo objeto controller.
 public class Controller {
     
     private static Controller instance = null;

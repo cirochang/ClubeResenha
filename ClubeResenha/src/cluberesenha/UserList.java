@@ -12,6 +12,8 @@ import java.util.Random;
  *
  * @author cirochang
  */
+
+//A classe UserList além de ser uma Iterator ela possui o método createUser() que faz com que ela acabe fazendo o papel de uma Factory Method.
 public class UserList {
     private ArrayList<User> user = new ArrayList<>();
     private int num_user = 0;
@@ -23,35 +25,42 @@ public class UserList {
         String first_name = "Ciro";
         String last_name = "Lyra Chang";
         String email = "cirochang@live.com";
-        String password = "Ciross";
+        String password = "123456";
         String phone = "969007259";
         String rg = "12345678";
         String cpf = "15298233740";
         user.add(new Member());
         getLast().setAllParams(user_type, matricula, first_name, last_name, email, password, phone, rg, cpf);
+        getLast().getBillList().createBill(20, "Deposited");
         
         user.add(new Teacher());
         getLast().setAllParams("Teacher", "20150002","Kakashi", "Sensei", "kakashi@gmail.com", "123456", "22883527", "345212345", "154993234");
-        
+        getLast().getBillList().createBill(420, "Deposited");
         //done
         user.add(new Secretary());
         getLast().setAllParams("Secretary", "20150003","Jenifer", "Lopes", "jenifer@gmail.com", "123456", "22883527", "345212345", "154993234");
+        getLast().getBillList().createBill(210, "Deposited");
         
         //done
         user.add(new MasterUser());
         getLast().setAllParams("Master", "20150004","Goku", "Sayajin", "goku@gmail.com", "123456", "22883527", "345212345", "154993234");
+        getLast().getBillList().createBill(1999999, "Game Shark");
         
         user.add(new Doctor());
         getLast().setAllParams("Doctor", "20150005","Sasha", "Grey", "sashagrey@gmail.com", "123456", "22883527", "345212345", "154993234");
+        getLast().getBillList().createBill(800, "Deposited");
         
         user.add(new RestaurantOwner());
         getLast().setAllParams("Restaurant Owner", "20150006","Hong", "Chang", "hongchang@gmail.com", "123456", "22883527", "345212345", "154993234");
+        getLast().getBillList().createBill(580, "Deposited");
         
         user.add(new PersonalTrainner());
         getLast().setAllParams("Personal Trainner", "20150007","Arnold", "Shernegued", "arnoldsherned@gmail.com", "123456", "22883527", "345212345", "154993234");
+        getLast().getBillList().createBill(350, "Deposited");
         
         user.add(new CinemaOwner());
         getLast().setAllParams("Cinema Owner", "20150008","Tulio", "Tuliban", "tuliotuliban@gmail.com", "123456", "22883527", "345212345", "154993234");
+        getLast().getBillList().createBill(200, "Deposited");
     }
     
     public String matriculaGenerate(){

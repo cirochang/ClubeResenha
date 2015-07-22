@@ -11,6 +11,9 @@ import java.util.ArrayList;
  *
  * @author cirochang
  */
+
+//A classe CardapioList Além de fazer o papel de uma Iterator, ela também é uma Sligetoon. O Sligetoon foi usado para facilitar a busca de todas as classes 
+//sem depender de um professor. 
 public class SportClassList {
     
     private static SportClassList instance = null;

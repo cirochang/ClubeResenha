@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cluberesenha;
+//package cluberesenha;
 
 /**
  *
  * @author cirochang
  */
-public class Adress {
-    private String street;
-    private int number;
-    private String state;
-    private int cep;
-}
+//public class Adress {
+//    private String street;
+//    private int number;
+//    private String state;
+//    private int cep;
+//}

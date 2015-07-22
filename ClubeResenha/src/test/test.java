@@ -8,6 +8,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 /**
  *
@@ -16,7 +17,11 @@ import java.util.Date;
 public class test {
     public static void main( String[] args ) 
     {
-    	try{
+    	testDoors();
+    }
+    
+    public static void testDate(){
+        try{
  
                 DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         	Date date1 = dateFormat.parse("2009/12/31 12:00:00"); //
@@ -40,5 +45,55 @@ public class test {
     	}catch(ParseException ex){
     		ex.printStackTrace();
     	}
+    }
+    
+    public static void testDoors(){
+    Random rand = new Random();
+    int min = 0;
+    int max = 2;        
+    int randomNum;
+    boolean[] door = new boolean[3];
+    door[0] = false;
+    door[1] = true;
+    door[2] = false;
+    int man;
+    int woman =0;
+    boolean loop = true;
+    int error = 0;
+    int good = 0;
+    for(int i=0; i< 100000; i++){
+        randomNum = rand.nextInt((max - min) + 1) + min;
+        man = randomNum;
+        while(loop==true){
+            randomNum = rand.nextInt((max - min) + 1) + min;
+            woman = randomNum;
+            if(woman != man){
+                loop = false;
+            }
+        }
+        loop = true;
+        if(door[woman] == false){
+            while(loop==true){
+                randomNum = rand.nextInt((max - min) + 1) + min;
+                if(randomNum != man && randomNum != woman){
+                    man = randomNum;
+                    loop = false;
+                }
+            }
+        }
+        
+        if(door[man] == true){
+            good++;
+        }
+        else{
+            error++;
+        }
+    }
+    float number = good/100000;
+    System.out.println("THE RELATION IS: "+ error);
+
+    
+       
+    
     }
 }

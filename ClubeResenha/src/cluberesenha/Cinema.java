@@ -10,8 +10,8 @@ package cluberesenha;
  * @author cirochang
  */
 public class Cinema {
-    private String name;
-    private String description;
+    private String name = "(Without a name)";
+    private String description = "(Without a description)";
     private MovieList movie_list = new MovieList();
     private SessionList session_list = new SessionList();
 
